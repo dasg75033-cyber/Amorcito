@@ -6,7 +6,7 @@
     
     <link rel="icon" href="flor-icono.png" type="image/png">
     
-    <title>21 de Marzo | Flores Amarillas para ti 💛</title>
+    <title>Para Fradelyn 🌻 21 de Marzo</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -26,7 +26,7 @@
             height: 100vh;
         }
 
-        /* --- TARJETA DE MENSAJE LARGO --- */
+        /* --- TARJETA DE MENSAJE --- */
         #main-card {
             position: absolute;
             top: 45%; left: 50%;
@@ -44,25 +44,24 @@
             border-radius: 40px;
             border: 1px solid rgba(255, 235, 59, 0.3);
             box-shadow: 0 0 60px rgba(0,0,0,0.9);
-            max-height: 70vh;
+            max-height: 75vh;
             overflow-y: auto;
         }
 
-        /* Personalización del scroll */
         .scroll-container::-webkit-scrollbar { width: 6px; }
         .scroll-container::-webkit-scrollbar-thumb { background: var(--amarillo); border-radius: 10px; }
 
         h2 { 
             font-family: 'Caveat', cursive; 
             color: var(--amarillo); 
-            font-size: 3.5rem; 
+            font-size: 3.8rem; 
             margin-bottom: 25px; 
             text-shadow: 0 0 20px var(--amarillo-brillo); 
         }
 
         .cuerpo-texto {
             line-height: 2;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #eeeeee;
             text-align: justify;
             font-weight: 300;
@@ -72,9 +71,10 @@
             color: var(--amarillo);
             font-weight: 600;
             display: block;
-            margin-top: 20px;
-            font-size: 1.3rem;
+            margin-top: 25px;
+            font-size: 1.5rem;
             font-family: 'Caveat', cursive;
+            text-align: center;
         }
 
         /* --- JARDÍN DE FLORES --- */
@@ -125,16 +125,16 @@
 </head>
 <body>
 
-    <button id="btn-start" onclick="iniciar()">Recibir mis flores amarillas 🌻</button>
+    <button id="btn-start" onclick="iniciar()">Para Fradelyn 🌻</button>
 
     <div id="main-card">
         <div class="scroll-container">
-            <h2>21 de Marzo</h2>
+            <h2>Para Fradelyn 💛</h2>
             <div class="cuerpo-texto">
-                <p>Hoy no es un día cualquiera. Hoy es 21 de marzo, el día en que el mundo se llena de color para recibir la primavera, pero para mí, es la oportunidad perfecta para recordarte lo especial que eres.</p>
-                <p>Dicen que regalar flores amarillas hoy es una promesa de amor, un deseo de que la luz nunca falte y una forma de decir que quiero que te quedes en mi vida por mucho tiempo más. He creado este jardín digital porque quería regalarte algo que, a diferencia de las flores naturales, nunca se marchitara; algo que florezca cada vez que abras esta página.</p>
-                <p>Al igual que la melodía de <i>Chachachá</i>, tú eres ese ritmo que me obliga a renacer y ese aliento que me devuelve la calma. Gracias por dejarme ser parte de tu historia y por ser la persona que ilumina mis días más oscuros.</p>
-                <span class="destacado">Te amo demasiado, hoy y todas las primaveras que vendrán. ❤️</span>
+                <p>Hoy es 21 de marzo, el día en que el mundo se llena de amarillo para recibir la primavera. Pero para mí, Fradelyn, no es solo una fecha en el calendario; es la oportunidad perfecta para recordarte lo inmensamente especial que eres en mi vida.</p>
+                <p>Dicen que regalar flores amarillas hoy es una promesa de amor y luz. He creado este jardín digital pensando en ti, para entregarte algo que nunca se marchite. Quiero que cada girasol que ves aquí sea un reflejo de la alegría que me das y de la luz que proyectas cada día.</p>
+                <p>Al igual que la melodía de <i>Chachachá</i>, tú eres ese ritmo que me obliga a renacer. Gracias por dejarme florecer a tu lado y por ser mi persona favorita, hoy y siempre.</p>
+                <span class="destacado">Te amo demasiado, Fradelyn. ❤️</span>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
     <script>
         function crearJardin() {
             const garden = document.getElementById('garden');
-            const totalFlores = 120; // Máxima densidad para el 21 de marzo
+            const totalFlores = 120;
 
             for (let i = 0; i < totalFlores; i++) {
                 const f = document.createElement('div');
