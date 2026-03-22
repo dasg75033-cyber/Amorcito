@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="flor-icono.png" type="image/png">
+    
+    <title>21 de Marzo | Flores Amarillas para ti 💛</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --amarillo: #ffeb3b;
+            --amarillo-brillo: rgba(255, 235, 59, 0.5);
+            --bg-dark: #0a0c0e;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: #e3e3e3;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* --- TARJETA DE MENSAJE LARGO --- */
+        #main-card {
+            position: absolute;
+            top: 45%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; max-width: 700px;
+            text-align: center;
+            z-index: 500;
+            opacity: 0;
+            transition: 3s ease;
+        }
+
+        .scroll-container {
+            background: rgba(15, 17, 20, 0.9);
+            padding: 45px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 235, 59, 0.3);
+            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Personalización del scroll */
+        .scroll-container::-webkit-scrollbar { width: 6px; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--amarillo); border-radius: 10px; }
+
+        h2 { 
+            font-family: 'Caveat', cursive; 
+            color: var(--amarillo); 
+            font-size: 3.5rem; 
+            margin-bottom: 25px; 
+            text-shadow: 0 0 20px var(--amarillo-brillo); 
+        }
+
+        .cuerpo-texto {
+            line-height: 2;
+            font-size: 1.1rem;
+            color: #eeeeee;
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        .destacado {
+            color: var(--amarillo);
+            font-weight: 600;
+            display: block;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-family: 'Caveat', cursive;
+        }
+
+        /* --- JARDÍN DE FLORES --- */
+        #garden {
+            position: absolute; bottom: 0; width: 100%; height: 100%;
+            display: flex; align-items: flex-end; pointer-events: none;
+        }
+
+        .flower { position: absolute; display: flex; flex-direction: column; align-items: center; bottom: -5vh; }
+        
+        .stem { 
+            width: 5px; background: linear-gradient(to top, var(--bg-dark), #1b3312); 
+            height: 0; transition: 4s ease-out; 
+        }
+
+        .head { 
+            position: relative; width: 55px; height: 55px; opacity: 0; 
+            transform: scale(0); transition: 1.5s 3s; 
+        }
+
+        .petal { 
+            position: absolute; background: var(--amarillo); width: 22px; height: 55px; 
+            border-radius: 50% 50% 10% 10%; left: 50%; bottom: 50%; 
+            transform-origin: bottom center; box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .center { 
+            position: absolute; width: 24px; height: 24px; background: #3e2723; 
+            border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;
+        }
+
+        /* --- BOTÓN --- */
+        #btn-start {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 25px 50px; background: var(--amarillo); color: #000;
+            border: none; border-radius: 60px; font-weight: 600; font-size: 1.4rem;
+            cursor: pointer; z-index: 2000; transition: 0.5s;
+            box-shadow: 0 0 40px var(--amarillo-brillo);
+            font-family: 'Montserrat', sans-serif;
+        }
+        #btn-start:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 60px var(--amarillo); }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2.5deg); }
+            50% { transform: rotate(2.5deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn-start" onclick="iniciar()">Recibir mis flores amarillas 🌻</button>
+
+    <div id="main-card">
+        <div class="scroll-container">
+            <h2>21 de Marzo</h2>
+            <div class="cuerpo-texto">
+                <p>Hoy no es un día cualquiera. Hoy es 21 de marzo, el día en que el mundo se llena de color para recibir la primavera, pero para mí, es la oportunidad perfecta para recordarte lo especial que eres.</p>
+                <p>Dicen que regalar flores amarillas hoy es una promesa de amor, un deseo de que la luz nunca falte y una forma de decir que quiero que te quedes en mi vida por mucho tiempo más. He creado este jardín digital porque quería regalarte algo que, a diferencia de las flores naturales, nunca se marchitara; algo que florezca cada vez que abras esta página.</p>
+                <p>Al igual que la melodía de <i>Chachachá</i>, tú eres ese ritmo que me obliga a renacer y ese aliento que me devuelve la calma. Gracias por dejarme ser parte de tu historia y por ser la persona que ilumina mis días más oscuros.</p>
+                <span class="destacado">Te amo demasiado, hoy y todas las primaveras que vendrán. ❤️</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="garden"></div>
+    <audio id="musica" src="chachacha.mp3"></audio>
+
+    <script>
+        function crearJardin() {
+            const garden = document.getElementById('garden');
+            const totalFlores = 120; // Máxima densidad para el 21 de marzo
+
+            for (let i = 0; i < totalFlores; i++) {
+                const f = document.createElement('div');
+                f.className = 'flower';
+                f.style.left = Math.random() * 100 + '%';
+                f.style.zIndex = Math.floor(Math.random() * 100);
+                f.style.animation = `sway ${Math.random() * 2 + 3}s infinite ease-in-out`;
+                
+                const h = Math.random() * 70 + 10;
+
+                f.innerHTML = `
+                    <div class="head" id="h-${i}">
+                        <div class="center"></div>
+                        ${Array.from({length: 8}, (_, j) => `<div class="petal" style="transform: translateX(-50%) rotate(${j*45}deg)"></div>`).join('')}
+                    </div>
+                    <div class="stem" id="s-${i}"></div>
+                `;
+                garden.appendChild(f);
+
+                setTimeout(() => {
+                    const stem = document.getElementById(`s-${i}`);
+                    const head = document.getElementById(`h-${i}`);
+                    if(stem && head) {
+                        stem.style.height = h + 'vh';
+                        head.style.opacity = '1';
+                        head.style.transform = 'scale(1)';
+                    }
+                }, Math.random() * 6000);
+            }
+        }
+
+        function iniciar() {
+            document.getElementById('btn-start').style.opacity = '0';
+            setTimeout(() => document.getElementById('btn-start').style.display = 'none', 600);
+            
+            const musica = document.getElementById('musica');
+            musica.play();
+            
+            crearJardin();
+            
+            setTimeout(() => {
+                document.getElementById('main-card').style.opacity = '1';
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
